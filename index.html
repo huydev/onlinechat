@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>在线聊天系统</title>
+  <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="header">
+    <div class="container-fluid">
+        <h1>在线聊天系统</h1>
+        <hr>
+    </div>
+  </header>
+  <section class="container-fluid main">
+      <div class="row">
+        <div class="col-md-6" id="leftzone">
+          <div class="contents-wrap">
+            <div id="contents">
+
+            </div>
+          </div>
+          <div class="message-box">
+            <input type="hidden" id="src">
+            <div>
+              <textarea id="msg" class="form-control" placeholder="您可以先点击连接，寻找一个和你聊天的人..."></textarea>
+            </div>
+            <div class="text-right">
+              <button type="button" id="break" class="btn btn-default hide">断开链接</button>
+              <button id="concat" type="button" class="btn btn-info">连接</button>
+              <button type="button" id="send" class="btn btn-primary">发送(<span class="underline">S</span>)</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <p id="total">当前有<span></span>在线</p>
+          <p id="wt">等待聊天数<span></span></p>
+        </div>
+      </div>
+  </section>
+  <footer id="footer">
+    <p>Powered by <a href="http://socket.io/" target="_blank">Socket.IO</a>&nbsp;&nbsp;版本: 0.0.1</p>
+    <p>© 2015  虐猫狂人薛定谔</p>
+  </footer>
+
+<script src="http://cdn.bootcss.com/socket.io/1.3.7/socket.io.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+html{height:100%;}
+body{
+  color: #333;
+  height: 100%;
+}
+#header{
+  position: relative;
+  z-index: 2;
+}
+.main{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  z-index: 1;
+}
+.main .row{
+  height: 100%;
+}
+#leftzone{
+  position: relative;
+  height: 100%;
+  border-right: 1px solid #d7d7d7;
+}
+.main .row{height: 100%;}
+.main .col-md-6{height: 100%;}
+.message-box{
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.contents-wrap{
+  position: absolute;
+  top: 0;
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+  padding-bottom: 150px;
+}
+#msg{
+  max-width: 100%;
+  line-height: 20px;
+  height: 92px; /*60 + 12*/
+}
+.message-box .text-right{
+  margin-top: 15px;
+}
+.message-box .underline{
+  text-decoration: underline;
+}
+#contents{
+  height: 100%;
+  padding-bottom: 170px;
+}
+.conitem{
+  margin-bottom: 10px;
+}
+.conitem .hd{
+  color: #666;
+}
+.conitem .bd{
+  color: #999;
+}
+.conitem.you .hd{
+  color: #0036f6;
+}
+.conitem.you .bd,.conitem.me .bd{
+  color: #333;
+}
+.conitem.me .hd{
+  color: #008040;
+}
+.conitem .hd span{
+  margin-left: 1em;
+}
+.conitem .bd{
+  margin-top: 3px;
+  line-height: 1.5;
+}
+#footer{
+  position: fixed;
+  width: 100%;
+  bottom: 10px;
+  left: 0;
+  z-index: 2;
+}
+#footer p{
+  margin:0;
+  text-align: center;
+}
+.hide{
+  display: none;
+}
