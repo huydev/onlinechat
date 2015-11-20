@@ -33,7 +33,14 @@ io.on('connection', function(socket){
       if(s.id === socket.id){ //如果在等待中，则 waitSocket 移除
         waitSocket.splice(index, 1);
       }else{  //如果在连接中，则需要把对方加入 waitSocket
-        //...
+        io.sockets.sockets.map(function(e){
+          if(e.id == socket.srcId){
+            waitSocket.push(e);
+            e.emit('breakchat',{
+              status: 1
+            });
+          }
+        });
       }
     });
 
@@ -48,6 +55,9 @@ io.on('connection', function(socket){
         waitSocket.splice(index, 1);  //删除本身
         var ysocket = waitSocket[random];
         waitSocket.splice(random, 1); //删除匹配
+
+        ysocket.srcId = socket.id;  //处理关闭浏览器情况
+
         ysocket.emit('reqchat', {
           srcId: socket.id
         });
@@ -59,6 +69,9 @@ io.on('connection', function(socket){
     if(data.result === 1){
       io.sockets.sockets.map(function(e){
         if(e.id == data.srcId){
+
+          e.srcId = socket.id;  //处理关闭浏览器情况
+
           e.emit('reqresult', {
             srcId: socket.id,
             status: 1
