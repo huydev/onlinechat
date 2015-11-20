@@ -63,8 +63,13 @@ io.on('connection', function(socket){
         }
       });
     }else{
+
       io.sockets.sockets.map(function(e){
         if(e.id == data.srcId){
+
+          waitSocket.push(e);
+          waitSocket.push(socket);
+          
           e.emit('reqresult', {
             srcId: socket.id,
             status: 0
