@@ -30,10 +30,13 @@ io.on('connection', function(socket){
     total --;
     socket.broadcast.emit('total', total);
     waitSocket.forEach(function(s, index){
-      if(s.id === socket.id){
+      if(s.id === socket.id){ //如果在等待中，则 waitSocket 移除
         waitSocket.splice(index, 1);
+      }else{  //如果在连接中，则需要把对方加入 waitSocket
+        //...
       }
     });
+
     io.emit('wait', waitSocket.length+'');
     // console.log('离线后：'+total);
   });
