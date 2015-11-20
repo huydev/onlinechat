@@ -78,7 +78,7 @@ io.on('connection', function(socket){
     var msg = data.msg;
 
     io.sockets.sockets.map(function(e){
-      console.log(e.id);
+      //console.log(e.id);
       if(e.id == sId){
         e.emit('aconnect', msg);
       }
@@ -100,6 +100,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(80, function(){
+  console.log('listening on *:80');
 });
