@@ -29,20 +29,31 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     total --;
     socket.broadcast.emit('total', total);
-    waitSocket.forEach(function(s, index){
-      if(s.id === socket.id){ //如果在等待中，则 waitSocket 移除
-        waitSocket.splice(index, 1);
-      }else{  //如果在连接中，则需要把对方加入 waitSocket
-        io.sockets.sockets.map(function(e){
-          if(e.id == socket.srcId){
-            waitSocket.push(e);
-            e.emit('breakchat',{
-              status: 1
-            });
-          }
-        });
-      }
-    });
+    if(waitSocket.length > 0){
+      waitSocket.forEach(function(s, index){
+        if(s.id === socket.id){ //如果在等待中，则 waitSocket 移除
+          waitSocket.splice(index, 1);
+        }else{  //如果在连接中，则需要把对方加入 waitSocket
+          io.sockets.sockets.map(function(e){
+            if(e.id == socket.srcId){
+              waitSocket.push(e);
+              e.emit('breakchat',{
+                status: 1
+              });
+            }
+          });
+        }
+      });
+    }else{
+      io.sockets.sockets.map(function(e){
+        if(e.id == socket.srcId){
+          waitSocket.push(e);
+          e.emit('breakchat',{
+            status: 1
+          });
+        }
+      });
+    }
 
     io.emit('wait', waitSocket.length+'');
     // console.log('离线后：'+total);
@@ -122,6 +133,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(80, function(){
+  console.log('listening on *:80');
 });
