@@ -125,7 +125,7 @@ io.on('connection', function(socket){
       if(e.id == data.srcId){
         e.srcId = null;
         socket.srcId = null;
-        
+
         waitSocket.push(e);
         e.emit('breakchat', {
           status: 1
@@ -136,6 +136,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(80, function(){
+  console.log('listening on *:80');
 });
